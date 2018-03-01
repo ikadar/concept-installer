@@ -59,7 +59,18 @@ class Plugin implements PluginInterface, EventSubscriberInterface
     {
         return [
             ScriptEvents::POST_AUTOLOAD_DUMP => 'onPostAutoloadDump',
+            ScriptEvents::PRE_UPDATE_CMD => 'onPreUpdate',
         ];
+    }
+
+    public function onPreUpdate(Event $event) {
+        echo("\nPREUDATE\n");
+        /** @var Package $package */
+        $package = $this->composer->getPackage();
+        $extra = $package->getExtra();
+
+        var_dump($package);
+        echo("\nPREUDATE2\n");
     }
 
     /**
