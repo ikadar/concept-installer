@@ -68,9 +68,11 @@ class Plugin implements PluginInterface, EventSubscriberInterface
     public function onPostAutoloadDump(Event $event)
     {
         echo("\nHELLO\n");
-//        /** @var Package $package */
-//        $package = $this->composer->getPackage();
-//        $extra = $package->getExtra();
+        /** @var Package $package */
+        $package = $this->composer->getPackage();
+        $extra = $package->getExtra();
+
+        var_dump($package);
 //
 //        $ignoreList = isset($extra['light-ignore-plugin']) ? $extra['light-ignore-plugin'] : null;
 //
