@@ -75,7 +75,7 @@ class Plugin implements PluginInterface, EventSubscriberInterface
 
         var_dump($package);
         var_dump($repositories);
-        var_dump($event);
+//        var_dump($event);
         var_dump($event->getInstalledRepo());
         echo("\nPRE PACKAGE UDATE 2\n");
     }
@@ -88,7 +88,7 @@ class Plugin implements PluginInterface, EventSubscriberInterface
 
         var_dump($package);
         var_dump($repositories);
-        var_dump($event);
+//        var_dump($event);
         var_dump($event->getInstalledRepo());
         echo("\nPOST PACKAGE UDATE 2\n");
     }
