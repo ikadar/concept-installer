@@ -71,6 +71,7 @@ class Plugin implements PluginInterface, EventSubscriberInterface
         $extra = $package->getExtra();
 
         var_dump($package);
+        var_dump($repositories);
         echo("\nPREUDATE2\n");
     }
 
