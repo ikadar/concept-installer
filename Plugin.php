@@ -13,6 +13,7 @@ use Composer\Composer;
 use Composer\Config;
 use Composer\EventDispatcher\EventSubscriberInterface;
 use Composer\Installer\PackageEvent;
+use Composer\Installer\PackageEvents;
 use Composer\IO\IOInterface;
 use Composer\Package\Package;
 use Composer\Plugin\PluginInterface;
@@ -60,9 +61,37 @@ class Plugin implements PluginInterface, EventSubscriberInterface
         return [
 //            ScriptEvents::POST_AUTOLOAD_DUMP => 'onPostAutoloadDump',
             ScriptEvents::PRE_UPDATE_CMD => 'onPreUpdate',
+            PackageEvents::PRE_PACKAGE_UPDATE => 'onPrePackageUpdate',
+            PackageEvents::POST_PACKAGE_UPDATE => 'onPostPackageUpdate',
         ];
     }
 
+    public function onPrePackageUpdate(PackageEvent $event) {
+        echo("\nPRE PACKAGE UDATE\n");
+        /** @var Package $package */
+        $package = $this->composer->getPackage();
+        $repositories = $package->getRepositories();
+        $extra = $package->getExtra();
+
+        var_dump($package);
+        var_dump($repositories);
+        var_dump($event);
+        var_dump($event->getInstalledRepo());
+        echo("\nPRE PACKAGE UDATE 2\n");
+    }
+    public function onPostPackageUpdate(PackageEvent $event) {
+        echo("\nPOST PACKAGE UDATE\n");
+        /** @var Package $package */
+        $package = $this->composer->getPackage();
+        $repositories = $package->getRepositories();
+        $extra = $package->getExtra();
+
+        var_dump($package);
+        var_dump($repositories);
+        var_dump($event);
+        var_dump($event->getInstalledRepo());
+        echo("\nPOST PACKAGE UDATE 2\n");
+    }
     public function onPreUpdate(Event $event) {
         echo("\nPREUDATE\n");
         /** @var Package $package */
