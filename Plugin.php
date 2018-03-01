@@ -72,11 +72,14 @@ class Plugin implements PluginInterface, EventSubscriberInterface
         $package = $this->composer->getPackage();
         $repositories = $package->getRepositories();
         $extra = $package->getExtra();
+        $e = $event->getOperation();
+        $p = $e->getTargetPackage();
+
 
 //        var_dump($package);
 //        var_dump($repositories);
 //        var_dump($event);
-        var_dump($event->getInstalledRepo()->getPackages());
+        var_dump($p);
         echo("\nPRE PACKAGE UDATE 2\n");
     }
     public function onPostPackageUpdate(PackageEvent $event) {
@@ -85,11 +88,14 @@ class Plugin implements PluginInterface, EventSubscriberInterface
         $package = $this->composer->getPackage();
         $repositories = $package->getRepositories();
         $extra = $package->getExtra();
+        $e = $event->getOperation();
+        $p = $e->getTargetPackage();
+
 
 //        var_dump($package);
 //        var_dump($repositories);
 //        var_dump($event);
-        var_dump($event->getInstalledRepo());
+        var_dump($p);
         echo("\nPOST PACKAGE UDATE 2\n");
     }
     public function onPreUpdate(Event $event) {
