@@ -60,7 +60,7 @@ class Plugin implements PluginInterface, EventSubscriberInterface
     {
         return [
 //            ScriptEvents::POST_AUTOLOAD_DUMP => 'onPostAutoloadDump',
-            ScriptEvents::PRE_UPDATE_CMD => 'onPreUpdate',
+//            ScriptEvents::PRE_UPDATE_CMD => 'onPreUpdate',
             PackageEvents::PRE_PACKAGE_UPDATE => 'onPrePackageUpdate',
             PackageEvents::POST_PACKAGE_UPDATE => 'onPostPackageUpdate',
         ];
@@ -73,10 +73,10 @@ class Plugin implements PluginInterface, EventSubscriberInterface
         $repositories = $package->getRepositories();
         $extra = $package->getExtra();
 
-        var_dump($package);
-        var_dump($repositories);
+//        var_dump($package);
+//        var_dump($repositories);
 //        var_dump($event);
-        var_dump($event->getInstalledRepo());
+        var_dump($event->getInstalledRepo()->getPackages());
         echo("\nPRE PACKAGE UDATE 2\n");
     }
     public function onPostPackageUpdate(PackageEvent $event) {
@@ -86,8 +86,8 @@ class Plugin implements PluginInterface, EventSubscriberInterface
         $repositories = $package->getRepositories();
         $extra = $package->getExtra();
 
-        var_dump($package);
-        var_dump($repositories);
+//        var_dump($package);
+//        var_dump($repositories);
 //        var_dump($event);
         var_dump($event->getInstalledRepo());
         echo("\nPOST PACKAGE UDATE 2\n");
