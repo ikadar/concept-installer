@@ -73,6 +73,7 @@ class Plugin implements PluginInterface, EventSubscriberInterface
         $extra = $package->getExtra();
 
         var_dump($package);
+        echo("\nHELLO2\n");
 //
 //        $ignoreList = isset($extra['light-ignore-plugin']) ? $extra['light-ignore-plugin'] : null;
 //
