@@ -81,6 +81,8 @@ class Plugin implements PluginInterface, EventSubscriberInterface
 //        var_dump($event);
 //        var_dump($p);
         var_dump($p->getName());
+        $p->setName('ikadar/composertest');
+        var_dump($p->getName());
         var_dump($p->getVersion());
         var_dump($extra);
         unset($extra['installer-paths']['./winelogics/']);
