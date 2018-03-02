@@ -81,6 +81,12 @@ class Plugin implements PluginInterface, EventSubscriberInterface
 //        var_dump($event);
 //        var_dump($p);
         var_dump($p->getName());
+        var_dump($p->getVersion());
+        var_dump($extra);
+        unset($extra['installer-paths']['./winelogics/']);
+        $extra['installer-paths']['./winelogics/2'] = ['ikadar/composertest'];
+        $package->setExtra($extra);
+        $extra = $package->getExtra();
         var_dump($extra);
         echo("\nPRE PACKAGE UDATE 2\n");
     }
@@ -99,8 +105,13 @@ class Plugin implements PluginInterface, EventSubscriberInterface
 //        var_dump($event);
 //        var_dump($p);
         var_dump($p->getName());
+        var_dump($p->getVersion());
         var_dump($extra);
-
+        unset($extra['installer-paths']['./winelogics/']);
+        $extra['installer-paths']['./winelogics/2'] = ['ikadar/composertest'];
+        $package->setExtra($extra);
+        $extra = $package->getExtra();
+        var_dump($extra);
         echo("\nPOST PACKAGE UDATE 2\n");
     }
     public function onPreUpdate(Event $event) {
